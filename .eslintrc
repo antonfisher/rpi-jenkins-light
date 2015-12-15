@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true
+  },
+  "globals": {},
+  "rules": {
+    "quotes": [2, "single"],
+    "no-underscore-dangle": 0,
+    "new-cap": 0,
+    "no-process-exit": 0,
+    "no-console": 0,
+    "strict": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "rules": {
+    "handle-callback-err": 0
+  }
+}
