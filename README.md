@@ -25,6 +25,16 @@
 * `$ npm install --dev`
 * `$ npm test`
 
+
+## ToDo
+* add images
+* confuguration examples
+* first release
+* check full instalation
+* test with jenkins mock
+* publish npm module
+* add travis button
+
 ## License
 Copyright (c) 2015 Anton Fisher <a.fschr@gmail.com>
 
