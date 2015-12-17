@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('expect.js');
+var mockery = require('mockery');
 
 var configUnreachable = {
     view: 'kokoko',
@@ -79,8 +80,7 @@ describe('JenkinsGrabber', function () {
             });
         });
 
-        describe('prodution mode', function () {
-
+        describe('prodution mode [bad jenkins config]', function () {
             it('wrong format port request failed', function () {
                 var jenkinsGrabber = require('../modules/jenkinsGrabber')(configBadPort);
                 expect(jenkinsGrabber.getStatus).withArgs(function () {}).to.throwException('port should be');
@@ -94,8 +94,87 @@ describe('JenkinsGrabber', function () {
                     done();
                 });
             });
+        });
 
-            it('should return value properly');
+        describe('prodution mode [fake jenkins response]', function () {
+            var returnValuesIndex = 0;
+            var returnValues = ['blue', 'red_anime', 'red'];
+
+            beforeEach(function () {
+                mockery.enable({
+                    warnOnReplace: false,
+                    warnOnUnregistered: false,
+                    useCleanCache: true
+                });
+
+                mockery.registerMock('http', {
+                    get: function (value, callback) {
+                        var res = function () {
+                            var self = this;
+                            self.setEncoding = function () {
+                                //--
+                            };
+                            self.on = function (event, eventCallback) {
+                                if (event == 'data') {
+                                    eventCallback(JSON.stringify({
+                                        jobs: [{
+                                            color: returnValues[returnValuesIndex++]
+                                        }]
+                                    }));
+                                } else if (event == 'end') {
+                                    eventCallback();
+                                }
+                                return self;
+                            };
+                            return self;
+                        };
+
+                        callback(new res());
+
+                        return {
+                            on: function () {
+                                // ---
+                            }
+                        };
+                    }
+                });
+            });
+
+            afterEach(function () {
+                mockery.disable();
+            });
+
+            it('should return "ok" if color is "blue"', function (done) {
+                var jenkinsGrabber = require('../modules/jenkinsGrabber')(configUnreachable);
+
+                jenkinsGrabber.getStatus(function (err, value) {
+                    expect(err).to.be(null);
+                    expect(value).to.be('ok');
+                    done();
+                });
+            });
+
+            it('should return "run" if color is "red_anime"', function (done) {
+                var jenkinsGrabber = require('../modules/jenkinsGrabber')(configUnreachable);
+
+                jenkinsGrabber.getStatus(function (err, value) {
+                    expect(err).to.be(null);
+                    expect(value).to.be('run');
+                    done();
+                });
+            });
+
+            it('should return "fail" if color is "red"', function (done) {
+                var jenkinsGrabber = require('../modules/jenkinsGrabber')(configUnreachable);
+
+                jenkinsGrabber.getStatus(function (err, value) {
+                    expect(err).to.be(null);
+                    expect(value).to.be('fail');
+                    done();
+                });
+            });
+
+            it('should skip jenkins error');
         });
     });
 });
