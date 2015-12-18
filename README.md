@@ -1,5 +1,7 @@
 # Raspberry Pi Jenkins light
 
+[![Test Status](https://travis-ci.org/antonfisher/rpi-jenkins-light.svg)](https://travis-ci.org/antonfisher/rpi-jenkins-light)
+
 ## Instalation
 * SSH to _Raspberry Pi_
 * Install NodeJs 4.x `$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
@@ -27,13 +29,13 @@
 
 
 ## ToDo
-* add images
-* confuguration examples
-* first release
-* check full instalation
-* test with jenkins mock
-* publish npm module
-* add travis button
+- [x] add travis button
+- [ ] add images
+- [ ] confuguration examples
+- [ ] first release
+- [ ] check full instalation
+- [ ] test with jenkins mock
+- [ ] publish npm module
 
 ## License
 Copyright (c) 2015 Anton Fisher <a.fschr@gmail.com>
