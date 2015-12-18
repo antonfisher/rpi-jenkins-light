@@ -174,7 +174,15 @@ describe('JenkinsGrabber', function () {
                 });
             });
 
-            it('should skip jenkins error');
+            it('should skip jenkins error', function (done) {
+                var jenkinsGrabber = require('../modules/jenkinsGrabber')(configUnreachable);
+
+                jenkinsGrabber.getStatus(function (err, value) {
+                    expect(err).to.be(null);
+                    expect(value).to.be('undefined');
+                    done();
+                });
+            });
         });
     });
 });

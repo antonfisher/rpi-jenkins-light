@@ -32,7 +32,7 @@ module.exports = function (_config) {
     var _parseStatus = function (rawJson, callback) {
         var json;
         var err = null;
-        var value = STATUS.OK;
+        var value = STATUS.UNDEFINED;
 
         try {
             json = (JSON.parse(rawJson) || {});
@@ -42,9 +42,12 @@ module.exports = function (_config) {
                     if ((json.jobs[i].color || '').substr(-6) === '_anime') {
                         value = STATUS.RUN;
                         break;
-                    } else if (json.jobs[i].color === 'red') {
+                    }
+
+                    if (json.jobs[i].color === 'red') {
                         value = STATUS.FAIL;
-                        break;
+                    } else if (json.jobs[i].color === 'blue' && value === STATUS.UNDEFINED) {
+                        value = STATUS.OK;
                     }
                 }
             } else {
