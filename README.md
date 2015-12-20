@@ -2,39 +2,67 @@
 
 [![Test Status](https://travis-ci.org/antonfisher/rpi-jenkins-light.svg)](https://travis-ci.org/antonfisher/rpi-jenkins-light)
 
-## Instalation
+## Installation
 * SSH to _Raspberry Pi_
-* Install NodeJs 4.x `$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
-* Clone repository `$ git clone ...`
+* Install NodeJs 5.x `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
+* Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
 * `$ cd rpi-jenkins-light`
 * `$ sudo su` (need for GPIO module)
-* Install dependencies `$ npm install`
+* Install dependencies `$ npm install`.
+
+## Configure
+* `$ cd rpi-jenkins-light`
+* Edit `configs/config.js` file
+``` javascript
+module.exports = {
+    interval: 5 * 1000,             // jenkins requests interval
+    rpi: {                          // Raspberry Pi sub-config
+        gpio: {                     // GPIO [General Purpose Input Output] config
+            color: { 
+                red: 15,            // pin # for red color
+                yellow: 11,         // pin # for yellow color
+                green: 7            // pin # for green color
+            },
+            outputLevel: {
+                on: false, // 0v    // led turn on output level
+                off: true  // 3v3   // led turn off output level
+            }
+        }
+    },
+    jenkins: {                      // Jenkins sub-config
+        host: '10.0.0.1',           
+        port: '8080',
+        view: 'JenkinsLight',       // http://localhost:8080:/view/%VIEW_NAME%/
+        demoMode: true              // ignore jenkins config, turn on red-yellow-green lights
+    }
+};
+```
 
 ## Run
-* `$ sudo su` (need for GPIO module)
 * `$ cd rpi-jenkins-light`
-* `$ nodejs run.js`
+* `$ sudo su` (need for GPIO module)
+* `$ nodejs run.js`.
 
 ## Autorun
-* `$ sudo su` (need for GPIO module)
 * `$ cd rpi-jenkins-light`
+* `$ sudo su` (need for global modules)
 * `npm install pm2 -g`
 * `pm2 start run.js`
 * `pm2 startup`
-* `pm2 save`
+* `pm2 save`.
 
 ## Tests
+* Use _NodeJs v5.x_
 * `$ npm install --dev`
-* `$ npm test`
-
+* `$ npm test`.
 
 ## ToDo
 - [x] add travis button
+- [x] configuration examples
+- [x] test with jenkins mock
 - [ ] add images
-- [ ] confuguration examples
 - [ ] first release
-- [ ] check full instalation
-- [ ] test with jenkins mock
+- [ ] check full installation
 - [ ] publish npm module
 
 ## License
