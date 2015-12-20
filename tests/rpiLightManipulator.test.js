@@ -26,7 +26,7 @@ describe('RpiLightManipulator', function () {
         });
 
         mockery.registerMock('rpi-gpio', {
-            setup: function (callback) {
+            setup: function (pin, direction, callback) {
                 if (callback) {
                     callback();
                 }
@@ -77,21 +77,126 @@ describe('RpiLightManipulator', function () {
     });
 
     describe('setup()', function () {
-        it('empty');
+        it('should setup correct pins and directions', function (done) {
+            var _setupCache = {};
+
+            mockery.registerMock('rpi-gpio', {
+                DIR_IN: 'in',
+                DIR_OUT: 'out',
+                setup: function (pin, direction, callback) {
+                    _setupCache[pin] = direction;
+                    if (callback) {
+                        callback();
+                    }
+                }
+            });
+
+            var rpiLightManipulator = require('../modules/rpiLightManipulator')(config);
+
+            rpiLightManipulator.setup(function () {
+                setTimeout(function () {
+                    expect(_setupCache[config.gpio.color.red]).to.be('out');
+                    expect(_setupCache[config.gpio.color.yellow]).to.be('out');
+                    expect(_setupCache[config.gpio.color.green]).to.be('out');
+                    done();
+                }, 100);
+            });
+        });
     });
 
     describe('turnOff()', function () {
-        it('empty');
+        it('should turn off green color', function (done) {
+            mockery.registerMock('rpi-gpio', {
+                setup: function (pin, direction, callback) {
+                    if (callback) {
+                        callback(null);
+                    }
+                },
+                write: function (color, state, callback) {
+                    expect(color).to.be(config.gpio.color.green);
+                    expect(state).to.be(config.gpio.outputLevel.off);
+
+                    if (callback) {
+                        callback(null);
+                    }
+                }
+            });
+
+            var rpiLightManipulator = require('../modules/rpiLightManipulator')(config);
+
+            rpiLightManipulator.turnOff(rpiLightManipulator.COLORS.GREEN, function (err) {
+                expect(err).to.be(null);
+                done();
+            });
+        });
+
+        it('should turn off green and red colors', function (done) {
+            var _writeCache = {};
+            mockery.registerMock('rpi-gpio', {
+                setup: function (pin, direction, callback) {
+                    if (callback) {
+                        callback(null);
+                    }
+                },
+                write: function (color, state, callback) {
+                    _writeCache[color] = state;
+
+                    if (callback) {
+                        callback(null);
+                    }
+                }
+            });
+
+            var rpiLightManipulator = require('../modules/rpiLightManipulator')(config);
+
+            rpiLightManipulator.turnOff(
+                [rpiLightManipulator.COLORS.GREEN, rpiLightManipulator.COLORS.RED],
+                function (err) {
+                    expect(err).to.be(null);
+                    expect(_writeCache[config.gpio.color.red]).to.be(config.gpio.outputLevel.off);
+                    expect(_writeCache[config.gpio.color.green]).to.be(config.gpio.outputLevel.off);
+
+                    done();
+                }
+            );
+        });
     });
 
     describe('turnOffAll()', function () {
-        it('empty');
+        it('should turn off all colors', function (done) {
+            var _writeCache = {};
+            mockery.registerMock('rpi-gpio', {
+                setup: function (pin, direction, callback) {
+                    if (callback) {
+                        callback(null);
+                    }
+                },
+                write: function (color, state, callback) {
+                    _writeCache[color] = state;
+
+                    if (callback) {
+                        callback(null);
+                    }
+                }
+            });
+
+            var rpiLightManipulator = require('../modules/rpiLightManipulator')(config);
+
+            rpiLightManipulator.turnOffAll(function (err) {
+                expect(err).to.be(null);
+                expect(_writeCache[config.gpio.color.red]).to.be(config.gpio.outputLevel.off);
+                expect(_writeCache[config.gpio.color.yellow]).to.be(config.gpio.outputLevel.off);
+                expect(_writeCache[config.gpio.color.green]).to.be(config.gpio.outputLevel.off);
+
+                done();
+            });
+        });
     });
 
     describe('turnOn()', function () {
         it('should turn on green color', function (done) {
             mockery.registerMock('rpi-gpio', {
-                setup: function (callback) {
+                setup: function (pin, direction, callback) {
                     if (callback) {
                         callback(null);
                     }
@@ -129,7 +234,7 @@ describe('RpiLightManipulator', function () {
             var yellowWasOff = false;
 
             mockery.registerMock('rpi-gpio', {
-                setup: function (callback) {
+                setup: function (pin, direction, callback) {
                     if (callback) {
                         callback(null);
                     }
