@@ -2,6 +2,8 @@
 
 [![Test Status](https://travis-ci.org/antonfisher/rpi-jenkins-light.svg)](https://travis-ci.org/antonfisher/rpi-jenkins-light)
 
+![Parts unpackage](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/parts-unpackage.jpg)
+
 ## Installation
 * SSH to _Raspberry Pi_
 * Install NodeJs 5.x `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
@@ -38,6 +40,11 @@ module.exports = {
 };
 ```
 
+### Pins map
+![Pins](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/rpi-pins-schema.png)
+
+[More information...](http://elinux.org/RPi_Low-level_peripherals)
+
 ## Run
 * `$ cd rpi-jenkins-light`
 * `$ sudo su` (need for GPIO module)
@@ -60,7 +67,7 @@ module.exports = {
 - [x] add travis button
 - [x] configuration examples
 - [x] test with jenkins mock
-- [ ] add images
+- [x] add docs images
 - [ ] first release
 - [ ] check full installation
 - [ ] publish npm module
