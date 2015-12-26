@@ -71,6 +71,7 @@ module.exports = {
 - [ ] first release
 - [ ] check full installation
 - [ ] publish npm module
+- [ ] add link to article
 
 ## License
 Copyright (c) 2015 Anton Fisher <a.fschr@gmail.com>
