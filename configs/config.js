@@ -10,8 +10,8 @@ module.exports = {
                 green: 7
             },
             outputLevel: {
-                on: false, // 0v
-                off: true  // 3v3
+                on: true,  // 3v3
+                off: false // 0v
             }
         }
     },
