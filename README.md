@@ -67,13 +67,16 @@ Example config works with this configuration:
 * `$ npm install --dev`
 * `$ npm test`.
 
+## Release History
+* 1.0.0 Initial release.
+
 ## ToDo
 - [x] add travis button
 - [x] configuration examples
 - [x] test with jenkins mock
 - [x] add docs images
 - [x] check full installation
-- [ ] first release
+- [x] first release
 - [ ] publish npm module
 - [ ] add link to article
 
