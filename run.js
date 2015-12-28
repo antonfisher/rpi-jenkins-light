@@ -55,5 +55,5 @@ async.waterfall([
 
     setInterval(function () {
         updateState();
-    }, config.interval);
+    }, config.jenkins.interval);
 });

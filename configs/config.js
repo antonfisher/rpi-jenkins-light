@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = {
-    interval: 5 * 1000,
     rpi: {
         gpio: {
             color: {
@@ -16,6 +15,7 @@ module.exports = {
         }
     },
     jenkins: {
+        interval: 5 * 1000,
         host: '10.0.0.1',
         port: '8080',
         view: 'JenkinsLight',
