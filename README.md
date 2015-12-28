@@ -6,33 +6,35 @@
 
 ## Installation
 * SSH to _Raspberry Pi_
-* Install NodeJs 5.x `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
+* `$ sudo su` (need install Node and GPIO module)
+* Install NodeJs 5.x
+    * Add repository `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
+    * Run `apt-get install nodejs`
 * Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
 * `$ cd rpi-jenkins-light`
-* `$ sudo su` (need for GPIO module)
 * Install dependencies `$ npm install`.
 
 ## Configure
-* `$ cd rpi-jenkins-light`
-* Edit `configs/config.js` file
+Edit `$ vim configs/config.js` file:
+
 ``` javascript
 module.exports = {
-    interval: 5 * 1000,             // jenkins requests interval
     rpi: {                          // Raspberry Pi sub-config
         gpio: {                     // GPIO [General Purpose Input Output] config
-            color: { 
+            color: {
                 red: 15,            // pin # for red color
                 yellow: 11,         // pin # for yellow color
                 green: 7            // pin # for green color
             },
             outputLevel: {
                 on: true,  // 3v3   // led turn on output level
-                off: false // 30v   // led turn off output level
+                off: false // 0v    // led turn off output level
             }
         }
     },
     jenkins: {                      // Jenkins sub-config
-        host: '10.0.0.1',           
+        interval: 5 * 1000,         // requests interval
+        host: '10.0.0.1',
         port: '8080',
         view: 'JenkinsLight',       // http://localhost:8080:/view/%VIEW_NAME%/
         demoMode: true              // ignore jenkins config, turn on red-yellow-green lights
@@ -40,23 +42,25 @@ module.exports = {
 };
 ```
 
+### Connect LEDs to Raspberry Pi
+Example config works with this configuration:
+![LEDs connections](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/schema-simple.png)
+
 ### Pins map
 ![Pins](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/rpi-pins-schema.png)
 
 [More about Pi's pins...](http://elinux.org/RPi_Low-level_peripherals)
 
 ## Run
-* `$ cd rpi-jenkins-light`
 * `$ sudo su` (need for GPIO module)
 * `$ nodejs run.js`.
 
 ## Autorun
-* `$ cd rpi-jenkins-light`
 * `$ sudo su` (need for global modules)
-* `npm install pm2 -g`
-* `pm2 start run.js`
-* `pm2 startup`
-* `pm2 save`.
+* `$ npm install pm2 -g`
+* `$ pm2 startup`
+* `$ pm2 start run.js`
+* `$ pm2 save`.
 
 ## Tests
 * Use _NodeJs v5.x_
@@ -68,7 +72,7 @@ module.exports = {
 - [x] configuration examples
 - [x] test with jenkins mock
 - [x] add docs images
-- [ ] check full installation
+- [x] check full installation
 - [ ] first release
 - [ ] publish npm module
 - [ ] add link to article

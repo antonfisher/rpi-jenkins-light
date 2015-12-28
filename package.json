@@ -11,9 +11,8 @@
     "test": "./node_modules/mocha/bin/mocha tests"
   },
   "keywords": [
-    "raspberry",
-    "pi",
     "jenkins",
+    "raspberry pi",
     "gpio"
   ],
   "author": "Anton Fisher <a.fschr@gmail.com> (http://antonfisher.com)",
