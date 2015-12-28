@@ -10,9 +10,12 @@
 * Install NodeJs 5.x
     * Add repository `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
     * Run `apt-get install nodejs`
-* Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
-* `$ cd rpi-jenkins-light`
-* Install dependencies `$ npm install`.
+* From GitHub sources:
+    * Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
+    * `$ cd rpi-jenkins-light`
+    * Install dependencies `$ npm install`
+* From NPM:
+    * `$ npm install rpi-jenkins-light`.
 
 ## Configure
 Edit `$ vim configs/config.js` file:
@@ -53,7 +56,10 @@ Example config works with this configuration:
 
 ## Run
 * `$ sudo su` (need for GPIO module)
-* `$ nodejs run.js`.
+* From GitHub sources:
+    * `$ node run.js`
+* From NPM:
+    * `node ./node_modules/rpi-jenkins-light/run.js`
 
 ## Autorun
 * `$ sudo su` (need for global modules)
@@ -77,7 +83,8 @@ Example config works with this configuration:
 - [x] add docs images
 - [x] check full installation
 - [x] first release
-- [ ] publish npm module
+- [x] publish npm module
+- [ ] npm global module
 - [ ] add link to article
 
 ## License

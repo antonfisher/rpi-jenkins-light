@@ -2,12 +2,14 @@
   "name": "rpi-jenkins-light",
   "version": "1.0.0",
   "description": "Raspberry Pi Jenkins light",
+  "run": "run.js",
   "main": "run.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:antonfisher/rpi-jenkins-light.git"
   },
   "scripts": {
+    "start": "node run.js",
     "test": "./node_modules/mocha/bin/mocha tests"
   },
   "keywords": [
@@ -15,6 +17,9 @@
     "raspberry pi",
     "gpio"
   ],
+  "engines": {
+    "node": ">=4.0"
+  },
   "author": "Anton Fisher <a.fschr@gmail.com> (http://antonfisher.com)",
   "license": "MIT",
   "dependencies": {
