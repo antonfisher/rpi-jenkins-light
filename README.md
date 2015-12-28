@@ -1,4 +1,4 @@
-# Raspberry Pi Jenkins light
+# Raspberry Pi Jenkins Light
 
 [![Test Status](https://travis-ci.org/antonfisher/rpi-jenkins-light.svg)](https://travis-ci.org/antonfisher/rpi-jenkins-light)
 
@@ -26,8 +26,8 @@ module.exports = {
                 green: 7            // pin # for green color
             },
             outputLevel: {
-                on: false, // 0v    // led turn on output level
-                off: true  // 3v3   // led turn off output level
+                on: true,  // 3v3   // led turn on output level
+                off: false // 30v   // led turn off output level
             }
         }
     },
@@ -43,7 +43,7 @@ module.exports = {
 ### Pins map
 ![Pins](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/rpi-pins-schema.png)
 
-[More information...](http://elinux.org/RPi_Low-level_peripherals)
+[More about Pi's pins...](http://elinux.org/RPi_Low-level_peripherals)
 
 ## Run
 * `$ cd rpi-jenkins-light`
@@ -68,8 +68,8 @@ module.exports = {
 - [x] configuration examples
 - [x] test with jenkins mock
 - [x] add docs images
-- [ ] first release
 - [ ] check full installation
+- [ ] first release
 - [ ] publish npm module
 - [ ] add link to article
 
