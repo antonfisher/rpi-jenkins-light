@@ -9,7 +9,7 @@
 * `$ sudo su` (need install Node and GPIO module)
 * Install NodeJs 5.x
     * Add repository `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
-    * Run `apt-get install nodejs`
+    * Run `$ apt-get install nodejs`
 * From GitHub sources:
     * Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
     * `$ cd rpi-jenkins-light`
@@ -45,6 +45,9 @@ module.exports = {
 };
 ```
 
+### Demo mode
+To run light in demo mode set property: `demoMode: true` in `jenkins` section in `configs/config.js`.
+
 ### Connect LEDs to Raspberry Pi
 Example config works with this configuration:
 ![LEDs connections](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/schema-simple.png)
@@ -54,12 +57,18 @@ Example config works with this configuration:
 
 [More about Pi's pins...](http://elinux.org/RPi_Low-level_peripherals)
 
+## Configure Jenkins
+* Open Jenkins main page
+* Create new list view called `JenkinsLight`
+* Add monitored tasks to this view.
+![Jenkins View](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/create-jenkins-view.png)
+
 ## Run
 * `$ sudo su` (need for GPIO module)
 * From GitHub sources:
     * `$ node run.js`
 * From NPM:
-    * `node ./node_modules/rpi-jenkins-light/run.js`
+    * `$ node ./node_modules/rpi-jenkins-light/run.js`.
 
 ## Autorun
 * `$ sudo su` (need for global modules)
