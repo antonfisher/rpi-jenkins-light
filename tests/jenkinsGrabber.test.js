@@ -115,13 +115,13 @@ describe('JenkinsGrabber', function () {
                                 //--
                             };
                             self.on = function (event, eventCallback) {
-                                if (event == 'data') {
+                                if (event === 'data') {
                                     eventCallback(JSON.stringify({
                                         jobs: [{
                                             color: returnValues[returnValuesIndex++]
                                         }]
                                     }));
-                                } else if (event == 'end') {
+                                } else if (event === 'end') {
                                     eventCallback();
                                 }
                                 return self;
