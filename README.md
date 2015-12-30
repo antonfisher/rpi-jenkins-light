@@ -57,6 +57,9 @@ Example config works with this configuration:
 
 [More about Pi's pins...](http://elinux.org/RPi_Low-level_peripherals)
 
+### Final version
+![Under hood](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/mounted-board.jpg)
+
 ## Configure Jenkins
 * Open Jenkins main page
 * Create new list view called `JenkinsLight`
