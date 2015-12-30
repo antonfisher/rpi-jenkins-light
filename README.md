@@ -64,6 +64,7 @@ Example config works with this configuration:
 * Open Jenkins main page
 * Create new list view called `JenkinsLight`
 * Add monitored tasks to this view.
+
 ![Jenkins View](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/create-jenkins-view.png)
 
 ## Run
