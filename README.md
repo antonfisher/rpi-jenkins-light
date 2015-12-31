@@ -4,6 +4,8 @@
 
 ![Parts unpackage](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/parts-unpackage.jpg)
 
+__Note:__ this package was tested on Raspberry Pi 2.
+
 ## Installation
 * SSH to _Raspberry Pi_
 * `$ sudo su` (need install Node and GPIO module)
