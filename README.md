@@ -4,8 +4,6 @@
 
 ![Demo](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/traffic-light-demo.gif)
 
-![Under hood 1](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/light-before-close.jpg)
-
 __Note:__ this package was tested on Raspberry Pi 2.
 
 ## Installation
@@ -62,7 +60,9 @@ Example config works with this configuration:
 [More about Pi's pins...](http://elinux.org/RPi_Low-level_peripherals)
 
 ### Final version
-![Under hood](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/mounted-board.jpg)
+![Under hood 1](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/mounted-board.jpg)
+
+![Under hood 2](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/light-before-close.jpg)
 
 ## Configure Jenkins
 * Open Jenkins main page
