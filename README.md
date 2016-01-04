@@ -91,16 +91,12 @@ Example config works with this configuration:
 * `$ npm test`.
 
 ## Release History
+* 1.1.0 Tests and improvements
+    * configuration examples
+    * test with jenkins mock
 * 1.0.0 Initial release.
 
 ## ToDo
-- [x] add travis button
-- [x] configuration examples
-- [x] test with jenkins mock
-- [x] add docs images
-- [x] check full installation
-- [x] first release
-- [x] publish npm module
 - [ ] npm global module
 - [ ] add link to article
 
