@@ -6,17 +6,19 @@
 
 __Note:__ this package was tested on Raspberry Pi 2.
 
+Read [article about this project](http://antonfisher.com/posts/2016/01/05/make-raspberry-pi-jenkins-traffic-light/).
+
 ## Installation
 * SSH to _Raspberry Pi_
-* `$ sudo su` (need install Node and GPIO module)
+* `$ sudo su` (need for install _Node.js_)
 * Install NodeJs 5.x
     * Add repository `$ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
     * Run `$ apt-get install nodejs`
-* From GitHub sources:
-    * Clone repository `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
+* From _GitHub_ sources:
+    * Clone repository: `$ git clone https://github.com/antonfisher/rpi-jenkins-light.git`
     * `$ cd rpi-jenkins-light`
-    * Install dependencies `$ npm install`
-* From NPM:
+    * Install dependencies: `$ npm install`
+* From _NPM_:
     * `$ npm install rpi-jenkins-light`.
 
 ## Configure
@@ -41,8 +43,8 @@ module.exports = {
         interval: 5 * 1000,         // requests interval
         host: '10.0.0.1',
         port: '8080',
-        view: 'JenkinsLight',       // http://localhost:8080:/view/%VIEW_NAME%/
-        demoMode: true              // ignore jenkins config, turn on red-yellow-green lights
+        view: 'JenkinsLight',       // http://localhost:8080/view/%VIEW_NAME%/
+        demoMode: true              // demo turn on red-yellow-green lights
     }
 };
 ```
@@ -65,20 +67,25 @@ Example config works with this configuration:
 ![Under hood 2](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/light-before-close.jpg)
 
 ## Configure Jenkins
-* Open Jenkins main page
+* Open _Jenkins_ main page
 * Create new list view called `JenkinsLight`
 * Add monitored tasks to this view.
+
+The colors indicate (by priority):
+* Blinks yellow -- at least one build is running
+* Red -- at least one build is failed
+* Green -- all builds are OK.
 
 ![Jenkins View](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/create-jenkins-view.png)
 
 ## Run
 * `$ sudo su` (need for GPIO module)
-* From GitHub sources:
+* From _GitHub_ sources:
     * `$ node run.js`
-* From NPM:
+* From _NPM_:
     * `$ node ./node_modules/rpi-jenkins-light/run.js`.
 
-## Autorun
+## Autorun application after reboot
 * `$ sudo su` (need for global modules)
 * `$ npm install pm2 -g`
 * `$ pm2 startup`
@@ -97,8 +104,8 @@ Example config works with this configuration:
 * 1.0.0 Initial release.
 
 ## ToDo
+- [x] add link to article
 - [ ] npm global module
-- [ ] add link to article
 
 ## License
 Copyright (c) 2015 Anton Fisher <a.fschr@gmail.com>
