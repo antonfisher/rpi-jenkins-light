@@ -18,18 +18,18 @@
     "gpio"
   ],
   "engines": {
-    "node": ">=4.0"
+    "node": "4"
   },
   "author": "Anton Fisher <a.fschr@gmail.com> (http://antonfisher.com)",
   "license": "MIT",
   "dependencies": {
-    "async": "^1.5.0",
-    "rpi-gpio": "^0.7.0",
-    "winston": "^2.1.1"
+    "async": "1.5.0",
+    "rpi-gpio": "0.7.0",
+    "winston": "2.1.1"
   },
   "devDependencies": {
-    "expect.js": "^0.3.1",
-    "mocha": "^2.3.4",
-    "mockery": "^1.4.0"
+    "expect.js": "0.3.1",
+    "mocha": "2.3.4",
+    "mockery": "1.4.0"
   }
 }
