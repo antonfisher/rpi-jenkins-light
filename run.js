@@ -29,7 +29,7 @@ var updateState = function () {
         }
     ], function (err) {
         if (err) {
-            logger.error(err);
+            logger.warn(err);
         }
     });
 };
