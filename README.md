@@ -89,11 +89,26 @@ The colors indicate (by priority):
     * `$ node ./node_modules/rpi-jenkins-light/run.js`.
 
 ## Autorun application after reboot
-* `$ sudo su` (need for global modules)
-* `$ npm install pm2 -g`
-* `$ pm2 startup`
-* `$ pm2 start run.js`
-* `$ pm2 save`.
+```bash
+sudo su #need for global modules
+npm install pm2 -g
+pm2 startup
+pm2 start run.js -o "/dev/null" -e "/dev/null" #run w/o logging
+# pm2 start run.js #run w/ logging
+pm2 save
+```
+
+## Advanced
+Disable ext4 journal:
+```bash
+sudo -i
+echo u > /proc/sysrq-trigger 
+echo s > /proc/sysrq-trigger 
+tune2fs -O ^has_journal /dev/mmcblk0p2
+e2fsck -fy /dev/mmcblk0p2
+echo s > /proc/sysrq-trigger 
+echo b > /proc/sysrq-trigger
+```
 
 ## Tests
 * Use _NodeJs v5.x_
