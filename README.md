@@ -3,6 +3,7 @@
 [![build](https://travis-ci.org/antonfisher/rpi-jenkins-light.svg)](https://travis-ci.org/antonfisher/rpi-jenkins-light)
 [![npm](https://img.shields.io/npm/dt/rpi-jenkins-light.svg?maxAge=86400)](https://www.npmjs.com/package/rpi-jenkins-light)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![GitHub license](https://img.shields.io/github/license/antonfisher/rpi-jenkins-light.svg)](https://github.com/antonfisher/rpi-jenkins-light/blob/master/LICENSE)
 ![status](https://img.shields.io/badge/status-beta-lightgray.svg)
 
 ![Demo](https://raw.githubusercontent.com/antonfisher/rpi-jenkins-light/docs/images/traffic-light-demo.gif)
